@@ -1,0 +1,9 @@
+package pages;
+
+import org.openqa.selenium.support.FindBy;
+
+import base.BaseTest;
+
+public class LoginPage extends BaseTest {
+	@FindBy(id = "")
+}

@@ -1,0 +1,37 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import base.BaseTest;
+import net.bytebuddy.asm.Advice.This;
+
+public class LoginPage extends BaseTest {
+	@FindBy(id = "username")
+	private WebElement usernameInputField;
+	
+	@FindBy(id = "password")
+	private WebElement passwordInputField;
+	
+	@FindBy(xpath = "//button[text()='Login']")
+	private WebElement loginBtnElement;
+	
+	public LoginPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	public void enterUsername(String userNameString) {
+		usernameInputField.sendKeys(userNameString);
+	}
+	
+	public void enterPassword(String passwordString) {
+		passwordInputField.sendKeys(passwordString);
+	}
+	
+	public void clickLoginBtn() {
+		loginBtnElement.click();
+	}
+}

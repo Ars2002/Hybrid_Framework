@@ -1,0 +1,18 @@
+package testcases;
+
+import org.junit.Test;
+
+import base.BaseTest;
+import pages.LoginPage;
+
+public class LoginTest extends BaseTest{
+	@Test
+	public void testValidLogin() {
+		LoginPage loginPage = new LoginPage(driver);
+		
+		loginPage.enterUsername("practice");
+		loginPage.enterPassword("SuperSecretPassword!");
+		Thread.sleep(2000);
+		loginPage.clickLoginBtn();
+	}
+}

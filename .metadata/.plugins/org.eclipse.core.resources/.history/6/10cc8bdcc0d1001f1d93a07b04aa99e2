@@ -1,0 +1,19 @@
+package utils;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
+public class ReportUtils {
+	private static ExtentReports extentReports;
+	private static ExtentTest extentTest;
+	
+	//Initialize the report
+	public static void initializeReport() {
+		//Set the report file path
+		String reportPathString  = "test-output/ExtentReport.html";
+		
+		//Create an ExtentHTMLReporter object
+		ExtentHtmlReporter htmlReporter = new 
+	}
+}

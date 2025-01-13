@@ -1,0 +1,13 @@
+package testcases;
+
+import org.junit.Test;
+
+import base.BaseTest;
+
+public class HomePageTest extends BaseTest{
+	HomePage homePage = new pages.HomePage()
+	@Test
+	public void validate_User_Landed_To_Home_Page() {
+		
+	}
+}
