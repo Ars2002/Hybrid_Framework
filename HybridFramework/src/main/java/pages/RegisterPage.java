@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 import base.BaseTest;
 
 public class RegisterPage extends BaseTest{
-	WebDriver driver;
 	
 	@FindBy (xpath = "//div[@id='rightPanel']/h1")
 	WebElement signupHeadingElement;
@@ -21,8 +20,7 @@ public class RegisterPage extends BaseTest{
 	@FindBy (xpath = "//form[@id='customerForm']//input")
 	List<WebElement> rowsElements;
 	
-	public RegisterPage(WebDriver driver) {
-		this.driver = driver;
+	public RegisterPage() {
 		PageFactory.initElements(driver, this);
 	}
 	

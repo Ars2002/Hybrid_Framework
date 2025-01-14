@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,10 +18,21 @@ public class ExcelUtils {
 	private Sheet sheet;
 
 	// Constructor to load the Excel file and sheet
-	public ExcelUtils(String filePath, String sheetName) {
-		try (FileInputStream fis = new FileInputStream(filePath)) {
+	public ExcelUtils(String fileName, String sheetName) {
+		// Get the user directory (project directory)
+        String projectDir = System.getProperty("user.dir");
+        
+        // Construct the file path dynamically based on the project directory
+        String filePath = projectDir + File.separator + "src" + File.separator + "test" 
+        		+ File.separator + "resources";
+
+
+		String filePathString = filePath+File.separator+fileName;
+		System.out.println(filePathString);
+		try (FileInputStream fis = new FileInputStream(filePathString)) {
 			workbook = new XSSFWorkbook(fis);
 			sheet = workbook.getSheet(sheetName);
+			System.out.println(sheetName);
 		} catch (IOException exception) {
 			exception.printStackTrace();
 		}

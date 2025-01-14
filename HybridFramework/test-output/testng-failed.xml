@@ -6,8 +6,8 @@
       <class name="testcases.HomePageTest">
         <methods>
           <include name="setUp"/>
-          <include name="tearDown"/>
           <include name="register_A_Customer"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- testcases.HomePageTest -->
     </classes>
