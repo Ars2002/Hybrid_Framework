@@ -1,16 +1,15 @@
 package base;
 
 import java.time.Duration;
-import java.lang.reflect.Method;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.ConfigReader;
@@ -25,17 +24,21 @@ public class BaseTest {
 	protected static ScreenshotUtils screenshotUtils;
 
 	@BeforeClass
-	public static void setUp() {
+	public void setUp() throws InterruptedException {
 		extentReports = ReportManager.getReportInstance();
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(ConfigReader.getProperty("url"));
+		System.out.println(driver.getCurrentUrl());
+		Thread.sleep(5000);
 	}
 
+	
+	
 	@AfterClass
-	public static void tearDown() {
+	public void tearDown() {
 		extentReports.flush();
 		if (driver != null) {
 			driver.quit();

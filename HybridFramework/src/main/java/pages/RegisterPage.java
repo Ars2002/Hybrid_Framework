@@ -2,6 +2,7 @@ package pages;
 
 import java.util.List;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -9,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import base.BaseTest;
 
 public class RegisterPage extends BaseTest{
+	WebDriver driver;
+	
 	@FindBy (xpath = "//div[@id='rightPanel']/h1")
 	WebElement signupHeadingElement;
 	
@@ -18,7 +21,8 @@ public class RegisterPage extends BaseTest{
 	@FindBy (xpath = "//form[@id='customerForm']//input")
 	List<WebElement> rowsElements;
 	
-	public RegisterPage() {
+	public RegisterPage(WebDriver driver) {
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	

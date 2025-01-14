@@ -3,8 +3,8 @@ package testcases;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import base.BaseTest;
 import pages.HomePage;
@@ -13,12 +13,13 @@ import utils.ExcelUtils;
 
 public class HomePageTest extends BaseTest{
 	HomePage homePage = new HomePage();
-	RegisterPage registerPage = new RegisterPage();
+	RegisterPage registerPage = new RegisterPage(driver);
 	ExcelUtils excelUtils = new ExcelUtils("D:\\Automation-Framework\\HybridFramework\\src\\test\\resources\\CustomerDetails.xlsx", "Register");
 	
 	@Test
 	public void validate_User_Landed_To_Home_Page() throws InterruptedException {
 		Assert.assertTrue(homePage.urlLaunched());
+		System.out.println("Logo displayed");
 		homePage.openRegisterPage();
 		Thread.sleep(2000);
 	}
