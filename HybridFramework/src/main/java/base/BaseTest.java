@@ -5,26 +5,22 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
+import org.testng.ITestContext;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.ConfigReader;
-import utils.ReportManager;
-import utils.ScreenshotUtils;
+import utils.ReportUtils;
 
 public class BaseTest {
 
 	protected static WebDriver driver;
-	protected static ExtentReports extentReports;
-	protected static ExtentTest extentTest;
-	protected static ScreenshotUtils screenshotUtils;
 
-	public void initializeWebDriver() {
-		extentReports = ReportManager.getReportInstance();
+	public void initializeWebDriver(ITestContext context) {
+		
+		ReportUtils.initializeReport();
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
+		context.setAttribute("driver", driver);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(ConfigReader.getProperty("url"));
@@ -34,7 +30,7 @@ public class BaseTest {
 	
 
 	public void tearDown() {
-		extentReports.flush();
+		ReportUtils.finalizeReport();
 		if (driver != null) {
 			driver.quit();
 		}

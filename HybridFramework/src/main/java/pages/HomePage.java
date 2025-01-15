@@ -26,7 +26,6 @@ public class HomePage extends BaseTest{
 		System.out.println("URL Launched");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(parabankLogoElement));
-		//WebElement parabankLogoElement = driver.findElement(By.xpath("//div[@id='topPanel']/a[2]/img"));
 		return parabankLogoElement.isDisplayed();
 	}
 	
